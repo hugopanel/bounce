@@ -1,22 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhwu4amdntksq"]
+[gd_scene load_steps=3 format=3 uid="uid://dhwu4amdntksq"]
 
-[ext_resource type="PackedScene" uid="uid://ca2h8t8xc1smk" path="res://Model/export/stade.glb" id="1_1cgi0"]
-[ext_resource type="PackedScene" uid="uid://b7v3170dtrrjg" path="res://Model/export/pub.glb" id="2_ij277"]
+[ext_resource type="PackedScene" uid="uid://bwi13bv5a6qrm" path="res://Model/stadeExport.blend" id="2_g2lm5"]
 [ext_resource type="PackedScene" uid="uid://cde3u6v6m6sig" path="res://Model/export/Potos.glb" id="3_xwlfx"]
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(0.999954, -0.00806205, 0.0051201, 0.00809159, 0.999951, -0.00577206, -0.00507329, 0.00581324, 0.99997, 0, 0, 0)
-
-[node name="stade" parent="." instance=ExtResource("1_1cgi0")]
-transform = Transform3D(1, -1.14233e-09, 0, 1.27329e-11, 1, 4.65661e-10, 0, -9.31323e-10, 1, 0, 0, 0)
-
-[node name="pub" parent="." instance=ExtResource("2_ij277")]
-transform = Transform3D(1, -2.07001e-09, 0, 1.27329e-11, 1, 9.31323e-10, 0, -1.86265e-09, 1, 0, 0, 0)
 
 [node name="Potos" parent="." instance=ExtResource("3_xwlfx")]
 transform = Transform3D(1, -1.14233e-09, 0, 1.27329e-11, 1, 4.65661e-10, 0, -9.31323e-10, 1, 0, 0, 0)
 visible = false
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.999991, 0.00142748, 0.00404237, -0.00305188, 0.899259, 0.437405, -0.00301077, -0.437414, 0.899256, 0.0316137, 29.1241, 39.6843)
+transform = Transform3D(0.999991, 0.00142748, 0.00404237, -0.00305188, 0.899259, 0.437405, -0.00301077, -0.437414, 0.899256, 0.0145587, 47.5325, 91.726)
 fov = 37.5
+
+[node name="stadeExport" parent="." instance=ExtResource("2_g2lm5")]
+transform = Transform3D(1, -1.14233e-09, 0, 1.27329e-11, 1, 4.65661e-10, 0, -9.31323e-10, 1, 0, 0, 0)
+
+[node name="Stade" parent="stadeExport" index="0"]
+visible = false
+
+[node name="Empty" parent="stadeExport" index="2"]
+transform = Transform3D(1, -2.06455e-09, 0, 1.63709e-11, 1, 9.31323e-10, 0, -1.86265e-09, 1, 0.0577698, 7.1395, -0.041214)
+
+[node name="ControlLightPos" parent="stadeExport" index="4"]
+transform = Transform3D(4.73203, -1.96451e-09, -1.86265e-09, -9.02219e-10, 4.73203, 0, 0, -3.72529e-09, 4.73203, -8.73115e-09, 9.107, -3.72529e-09)
+
+[editable path="stadeExport"]
