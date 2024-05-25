@@ -20,14 +20,11 @@ var action_dash
 var available_dashes = 0
 var dashing = false
 
-var dashCurve: Curve3D
-
 func _ready():
 	$Area3D.body_entered.connect(_on_body_entered)
 	$NewDashTimer.timeout.connect(_new_dash_timer_timeout)
 	$NewDashTimer.start()
 	$DashingTimer.timeout.connect(_dashing_timer_timeout)
-	dashCurve = Curve3D.new()
 	
 func init_controls():
 	movement_left = "PA_Left" if player_id == 1 else "PB_Left"
@@ -64,7 +61,6 @@ func _physics_process(delta):
 	# If player is dashing...
 	if dashing:
 		target_speed = speed * 3
-		dashCurve.add_point(position)
 	
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
@@ -87,13 +83,11 @@ func _physics_process(delta):
 	# 		enabled_counter += 1
 
 func _on_body_entered(body: PhysicsBody3D):
-	print(body)
 	# if enabled:
-	if (body.name == "RigidBody3D"):
+	if (body.name == "Puck"):
 		# Check if player is moving
 		if (velocity != Vector3.ZERO):
 			body.velocity = velocity.normalized() * speed * 2
-			print("Disabled player " + str(player_id))
 			# enabled = false
 			dashing = false
 
@@ -104,4 +98,3 @@ func _new_dash_timer_timeout():
 
 func _dashing_timer_timeout():
 	dashing = false
-	dashCurve.clear_points()
