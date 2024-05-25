@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhwu4amdntksq"]
+[gd_scene load_steps=6 format=3 uid="uid://dhwu4amdntksq"]
 
 [ext_resource type="PackedScene" uid="uid://ehhick0bwnou" path="res://puck.tscn" id="1_cs417"]
 
@@ -33,6 +33,9 @@ func _process(delta):
 [sub_resource type="BoxShape3D" id="BoxShape3D_u0ufp"]
 size = Vector3(48.9912, 7.83569, 24.3516)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_m475y"]
+size = Vector3(49.0154, 1, 1)
+
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(0.999954, -0.00806205, 0.0051201, 0.00809159, 0.999951, -0.00577206, -0.00507329, 0.00581324, 0.99997, 0, 0, 0)
 script = SubResource("GDScript_ge7ui")
@@ -44,11 +47,19 @@ transform = Transform3D(0.999909, -0.00294158, 0.0131819, -0.0131818, 6.49527e-0
 transform = Transform3D(1, -1.17295e-09, -8.38664e-09, 3.20739e-10, 0.441506, 0.897258, 4.33187e-11, -0.897259, 0.441506, 0.249455, 34.3054, 16.7943)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(1, 1.02554e-08, -2.12148e-08, -9.69032e-10, 0.999999, 7.22445e-08, -5.96659e-10, -1.52379e-08, 1, 0, 0, 0)
+transform = Transform3D(1, 1.02554e-08, -2.10516e-08, -1.43469e-09, 0.999999, 1.89183e-08, -8.2949e-10, 1.45644e-08, 1, 0, 0, 0)
+current = true
+fov = 44.9
+
+[node name="Camera3D2" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(0.999978, 0.00124869, -0.00665032, -0.00534135, 0.74903, -0.662514, 0.00415399, 0.662535, 0.74902, -0.295855, -20.3001, -26.2055)
 fov = 44.9
 
 [node name="RigidBody3D" parent="." instance=ExtResource("1_cs417")]
-transform = Transform3D(-0.00507336, 0.00809157, -0.999955, 0.00581323, 0.99995, 0.00806207, 0.99997, -0.00577207, -0.00512012, 0, 0, 0)
+transform = Transform3D(-0.00507336, 0.00809157, -0.999955, 0.00581323, 0.99995, 0.00806207, 0.99997, -0.00577207, -0.00512012, 0.000628286, 0.0776431, -0.000448184)
+mass = 0.01
+gravity_scale = 1.66533e-16
+lock_rotation = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.999955, 0.0080916, 0.00507338, 0.00806207, 0.99995, -0.00581323, -0.00512019, -0.00577207, -0.999971, 0, 0, 0)
@@ -60,3 +71,19 @@ mesh = SubResource("BoxMesh_aiyx5")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 2.00249e-16, 1.49252e-15, -1.49766e-17, 1, -5.53737e-17, 1.96048e-15, 1.80817e-16, 1, -9.42183e-16, -3.95789, -6.40844e-16)
 shape = SubResource("BoxShape3D_u0ufp")
+
+[node name="Border up" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 2.00248e-16, -1.49252e-15, 3.16374e-16, 1, -3.88715e-16, 1.96048e-15, 1.80818e-16, 1, 8.32413e-07, -2.05907e-08, 12.6382)
+shape = SubResource("BoxShape3D_m475y")
+
+[node name="Border down" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 2.00248e-16, -4.47755e-15, 6.48411e-16, 1, -7.22057e-16, -3.35666e-14, 2.84535e-15, 0.999999, -8.3649e-07, 2.06915e-08, -12.7001)
+shape = SubResource("BoxShape3D_m475y")
+
+[node name="Border left" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, -7.03675e-10, 0.999998, 2.5548e-09, 1, 7.03673e-10, -0.999999, 2.5553e-09, -4.37113e-08, 24.8557, -2.32474e-08, 0.148469)
+shape = SubResource("BoxShape3D_m475y")
+
+[node name="Border right" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, -7.04169e-10, 0.999997, 2.5548e-09, 1, 7.03675e-10, -0.999997, 2.55529e-09, -4.37113e-08, -24.8458, 2.71202e-08, -2.53112)
+shape = SubResource("BoxShape3D_m475y")
