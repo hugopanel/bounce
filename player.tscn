@@ -26,3 +26,11 @@ shape = SubResource("CylinderShape3D_x81f3")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01459, 0)
 shape = SubResource("CylinderShape3D_tynqb")
+
+[node name="NewDashTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="DashingTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true

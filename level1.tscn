@@ -60,6 +60,7 @@ transform = Transform3D(-0.00507336, 0.00809157, -0.999955, 0.00581323, 0.99995,
 mass = 0.01
 gravity_scale = 1.66533e-16
 lock_rotation = true
+continuous_cd = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.999955, 0.0080916, 0.00507338, 0.00806207, 0.99995, -0.00581323, -0.00512019, -0.00577207, -0.999971, 0, 0, 0)
