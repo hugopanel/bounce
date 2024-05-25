@@ -2,8 +2,6 @@ extends CharacterBody3D
 
 # How fast the player moves in meters per second.
 @export var speed = 14
-# The downward acceleration when in the air, in meters per second squared.
-@export var fall_acceleration = 75
 
 var player_id # Player identifier (assigned by the level)
 
@@ -15,13 +13,19 @@ var movement_up
 var movement_down
 var action_dash
 
+var enabled = true
+var frames_before_reenabled = 5
+var enabled_counter = 0
+
+func _ready():
+	$Area3D.body_entered.connect(_on_body_entered)
 	
 func init_controls():
 	movement_left = "PA_Left" if player_id == 1 else "PB_Left"
 	movement_right = "PA_Right" if player_id == 1 else "PB_Right"
 	movement_up = "PA_Up" if player_id == 1 else "PB_Up"
 	movement_down = "PA_Down" if player_id == 1 else "PB_Down"
-	action_dash = "PA_Dash" if player_id == 1 else "PB_Dash"	
+	action_dash = "PA_Dash" if player_id == 1 else "PB_Dash"
  
 func _physics_process(delta):
 	# We create a local variable to store the input direction.
@@ -46,9 +50,20 @@ func _physics_process(delta):
 	target_velocity.x = direction.x * speed
 	target_velocity.z = direction.z * speed
 	
-	# Vertical Velocity
-	if not is_on_floor(): 
-		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
-		
 	velocity = target_velocity
 	move_and_slide()
+
+	if enabled == false:
+		if enabled_counter == frames_before_reenabled:
+			enabled_counter = 0
+			enabled = true
+		else:
+			enabled_counter += 1
+
+func _on_body_entered(body: PhysicsBody3D):
+	if enabled:
+		if (body.name == "RigidBody3D"):
+			# Check if player is moving
+			if (velocity != Vector3.ZERO):
+				body.velocity = velocity * 2
+				enabled = false

@@ -5,13 +5,13 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bt3i4"]
 height = 0.261861
-radius = 3.1236
+radius = 2.23568
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_f8cv3"]
 height = 0.245619
 radius = 0.998371
 
-[node name="RigidBody3D" type="RigidBody3D"]
+[node name="Puck" type="RigidBody3D"]
 can_sleep = false
 script = ExtResource("1_nb11t")
 
