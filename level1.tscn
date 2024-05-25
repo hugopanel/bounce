@@ -1,4 +1,34 @@
-[gd_scene format=3 uid="uid://dhwu4amdntksq"]
+[gd_scene load_steps=4 format=3 uid="uid://dhwu4amdntksq"]
+
+[ext_resource type="PackedScene" uid="uid://cycutwfv6lwbf" path="res://player.tscn" id="1_wrcou"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_feauj"]
+size = Vector3(24.3672, 0.202148, 51.9375)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4s487"]
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(0.999954, -0.00806205, 0.0051201, 0.00809159, 0.999951, -0.00577206, -0.00507329, 0.00581324, 0.99997, 0, 0, 0)
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 1.43759e-09, -7.96632e-10, 2.13693e-10, 1, 4.54996e-10, -1.44043e-10, 4.43619e-10, 1, 0, 0, 0)
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1.00003, -4.05244e-07, -1.23756e-07, 1.96135e-07, 0.99998, 1.06023e-07, 2.00942e-08, 4.85058e-08, 0.99998, 0, 0, 0)
+shape = SubResource("BoxShape3D_feauj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(24.3154, -1.2488e-09, -2.22296e-07, 3.50649e-07, 0.145797, -1.42121e-07, 1.88368e-08, -5.74671e-10, 51.8693, -0.00130299, -0.161023, 0.000929482)
+mesh = SubResource("BoxMesh_4s487")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999909, -0.00294159, 0.0131819, -0.0131818, 6.49528e-05, 0.999913, -0.0029422, -0.999996, 2.61579e-05, 0.0339886, 4.20028, -0.0242455)
+
+[node name="Player" parent="." instance=ExtResource("1_wrcou")]
+
+[node name="CameraPivot" type="Marker3D" parent="Player"]
+transform = Transform3D(1, -4.29776e-10, -1.43557e-10, 2.13693e-10, 1, -2.16673e-11, -1.44043e-10, -2.20698e-11, 1, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/CameraPivot"]
+transform = Transform3D(-0.999888, 0.0149126, 0.0015341, 0.0149126, 0.978942, 0.203591, 0.0015343, 0.203591, -0.979055, 0.0700539, 3.51437, -5.74193)
+fov = 36.5625
