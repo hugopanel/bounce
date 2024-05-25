@@ -13,18 +13,21 @@ var movement_up
 var movement_down
 var action_dash
 
-var enabled = true
-var frames_before_reenabled = 5
-var enabled_counter = 0
+# var enabled = true
+# var frames_before_reenabled = 5
+# var enabled_counter = 0
 
 var available_dashes = 0
 var dashing = false
+
+var dashCurve: Curve3D
 
 func _ready():
 	$Area3D.body_entered.connect(_on_body_entered)
 	$NewDashTimer.timeout.connect(_new_dash_timer_timeout)
 	$NewDashTimer.start()
 	$DashingTimer.timeout.connect(_dashing_timer_timeout)
+	dashCurve = Curve3D.new()
 	
 func init_controls():
 	movement_left = "PA_Left" if player_id == 1 else "PB_Left"
@@ -49,17 +52,19 @@ func _physics_process(delta):
 		direction.z += 1
 
 	if Input.is_action_just_pressed(action_dash):
-		if dashing == false: # We don't want to consume another dash if the player is already dashing
+		if dashing == false&&velocity != Vector3.ZERO: # We don't want to consume another dash if the player is already dashing
 			# Check if player can dash
 			if (available_dashes > 0):
 				available_dashes -= 1
 				$NewDashTimer.start()
 				$DashingTimer.start()
 				dashing = true
+				# self.add_child()
 	
 	# If player is dashing...
 	if dashing:
-		target_speed = speed * 4
+		target_speed = speed * 3
+		dashCurve.add_point(position)
 	
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
@@ -73,20 +78,24 @@ func _physics_process(delta):
 	velocity = target_velocity
 	move_and_slide()
 
-	if enabled == false:
-		if enabled_counter == frames_before_reenabled:
-			enabled_counter = 0
-			enabled = true
-		else:
-			enabled_counter += 1
+	# if enabled == false:
+	# 	if enabled_counter == frames_before_reenabled:
+	# 		enabled_counter = 0
+	# 		enabled = true
+	# 		print("Reenabled player " + str(player_id))
+	# 	else:
+	# 		enabled_counter += 1
 
 func _on_body_entered(body: PhysicsBody3D):
-	if enabled:
-		if (body.name == "RigidBody3D"):
-			# Check if player is moving
-			if (velocity != Vector3.ZERO):
-				body.velocity = velocity.normalized() * speed * 2
-				enabled = false
+	print(body)
+	# if enabled:
+	if (body.name == "RigidBody3D"):
+		# Check if player is moving
+		if (velocity != Vector3.ZERO):
+			body.velocity = velocity.normalized() * speed * 2
+			print("Disabled player " + str(player_id))
+			# enabled = false
+			dashing = false
 
 func _new_dash_timer_timeout():
 	if (available_dashes < 2):
@@ -95,3 +104,4 @@ func _new_dash_timer_timeout():
 
 func _dashing_timer_timeout():
 	dashing = false
+	dashCurve.clear_points()
