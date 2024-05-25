@@ -16,3 +16,7 @@ transform = Transform3D(1, -2.07001e-09, 0, 1.27329e-11, 1, 9.31323e-10, 0, -1.8
 [node name="Potos" parent="." instance=ExtResource("3_xwlfx")]
 transform = Transform3D(1, -1.14233e-09, 0, 1.27329e-11, 1, 4.65661e-10, 0, -9.31323e-10, 1, 0, 0, 0)
 visible = false
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999991, 0.00142748, 0.00404237, -0.00305188, 0.899259, 0.437405, -0.00301077, -0.437414, 0.899256, 0.0316137, 29.1241, 39.6843)
+fov = 37.5
