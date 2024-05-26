@@ -30,6 +30,8 @@ var timer_started = false
 var player1
 var player2
 
+var spawned_obstacles = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     # Add the obstacles to the map
@@ -95,7 +97,7 @@ func add_obstacles(spawn_area: Area3D, non_spawn_area: Area3D, number_of_obstacl
 
     var number_of_obstacles_with_goals = 2
 
-    var spawned_obstacles = []
+    spawned_obstacles = []
     for i in range(number_of_obstacles):
         var attempts = 0
         var spawned = false
@@ -165,18 +167,18 @@ func is_position_valid(new_position: Vector3, existing_obstacles: Array, non_spa
     return true
 
 func _on_PA_scored():
-	PA_Score += 1
-	print("PA SCORE " + str(PA_Score))
-	PA_Score_Label.text = str(PA_Score)
-	if $AudioStreamPlayer3D4.playing == false:
-		$AudioStreamPlayer3D4.play()
+    PA_Score += 1
+    print("PA SCORE " + str(PA_Score))
+    PA_Score_Label.text = str(PA_Score)
+    if $AudioStreamPlayer3D4.playing == false:
+        $AudioStreamPlayer3D4.play()
 
 func _on_PB_scored():
-	PB_Score += 1
-	print("PB SCORE " + str(PB_Score))
-	PB_Score_Label.text = str(PB_Score)
-	if $AudioStreamPlayer3D4.playing == false:
-		$AudioStreamPlayer3D4.play()
+    PB_Score += 1
+    print("PB SCORE " + str(PB_Score))
+    PB_Score_Label.text = str(PB_Score)
+    if $AudioStreamPlayer3D4.playing == false:
+        $AudioStreamPlayer3D4.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -233,3 +235,7 @@ func _on_game_timer_timeout():
     player2.reset_dashes()
     $Puck.position = Vector3(0, 0, 0)
     $Puck.velocity = Vector3(0, 0, 0)
+
+    for obstacle in spawned_obstacles:
+        obstacle.queue_free()
+    add_obstacles($ObstaclesArea, $ObstaclesAreaAvoid, 5)
