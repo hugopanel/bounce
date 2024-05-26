@@ -143,9 +143,10 @@ transform = Transform3D(1, -1.81918e-06, -4.59309e-07, 3.20739e-10, 1, 6.64369e-
 shape = SubResource("BoxShape3D_08w78")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("3_lp4oa")]
 
 [node name="GameTimer" type="Timer" parent="."]
-wait_time = 90.0
+wait_time = 5.0
 one_shot = true

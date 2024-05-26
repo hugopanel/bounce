@@ -207,6 +207,7 @@ func _on_game_timer_timeout():
         print("Set 3 PA: " + str(Set3_PA) + " Set 3 PB: " + str(Set3_PB))
         player1.enabled = false
         player2.enabled = false
+        get_node("CanvasLayer").add_child(preload ("res://EndGame_Scene.tscn").instantiate())
     $GameTimer.stop()
     player1.position = Vector3( - 20, 0, 0)
     player2.position = Vector3(20, 0, 0)
