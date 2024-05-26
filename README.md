@@ -1,11 +1,11 @@
 # Bounce
 
-Bounce is a simple game where you control a paddle to bounce a ball and break bricks. The game is written in Python using the Godot game engine.
+Bounce is a simple game where you control a paddle to bounce a ball and break bricks. The game is written in GDScript using the Godot game engine.
 
 ## How to play
 
-- Use the left and right arrow keys to move your player
-- Bounce the ball off the paddle to break the bricks
+- Use the WASD keys to move player 1, and an external controller to move player 2
+- Make the puck touch your color to earn points, and deviate it from your opponent's
 
 ## To do
 
