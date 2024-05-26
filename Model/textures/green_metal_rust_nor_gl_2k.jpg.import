@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3u55e1gebcvc"
-path.s3tc="res://.godot/imported/image.png-fafbdcee0e459e3889eb033f8e376681.s3tc.ctex"
+uid="uid://dpvqg3vfd0fp8"
+path="res://.godot/imported/green_metal_rust_nor_gl_2k.jpg-feb3bae33dafa6a73344f5e413ebef05.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Model/assets/image.png"
-dest_files=["res://.godot/imported/image.png-fafbdcee0e459e3889eb033f8e376681.s3tc.ctex"]
+source_file="res://Model/textures/green_metal_rust_nor_gl_2k.jpg"
+dest_files=["res://.godot/imported/green_metal_rust_nor_gl_2k.jpg-feb3bae33dafa6a73344f5e413ebef05.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
