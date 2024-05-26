@@ -236,3 +236,8 @@ func _on_game_timer_timeout():
 	player2.reset_dashes()
 	$Puck.position = Vector3(0, 0, 0)
 	$Puck.velocity = Vector3(0, 0, 0)
+	
+
+	for obstacle in spawned_obstacles:
+		obstacle.queue_free()
+	add_obstacles($ObstaclesArea, $ObstaclesAreaAvoid, 5)
