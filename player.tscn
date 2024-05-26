@@ -31,7 +31,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01459, 0)
 shape = SubResource("CylinderShape3D_tynqb")
 
 [node name="NewDashTimer" type="Timer" parent="."]
-wait_time = 2.0
 one_shot = true
 
 [node name="DashingTimer" type="Timer" parent="."]
