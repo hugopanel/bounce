@@ -1,4 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://lio7l5g7cjsk"]
+[gd_scene load_steps=15 format=3 uid="uid://lio7l5g7cjsk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ey6vy"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yexvc"]
+bg_color = Color(0.817649, 0.529801, 1.86892e-07, 1)
+
+[sub_resource type="Theme" id="Theme_oi7g7"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_ey6vy")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_yexvc")
 
 [sub_resource type="LabelSettings" id="LabelSettings_vc0lx"]
 font_size = 30
@@ -9,6 +19,41 @@ font_size = 30
 [sub_resource type="LabelSettings" id="LabelSettings_ugywa"]
 font_size = 30
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oeaql"]
+bg_color = Color(1, 1, 1, 1)
+skew = Vector2(0.7, 2.08165e-12)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ft0fv"]
+bg_color = Color(0.972549, 0.686275, 0.192157, 1)
+skew = Vector2(0.7, 2.08165e-12)
+
+[sub_resource type="Theme" id="Theme_perle"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_oeaql")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_ft0fv")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27c5x"]
+bg_color = Color(1, 1, 1, 1)
+skew = Vector2(-0.7, 2.08165e-12)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvwn8"]
+bg_color = Color(0.97102, 0.685847, 0.192902, 1)
+skew = Vector2(-0.7, 2.08165e-12)
+
+[sub_resource type="Theme" id="Theme_fkedo"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_27c5x")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_wvwn8")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yki0"]
+bg_color = Color(0.224722, 0.511221, 0.297836, 1)
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="Theme" id="Theme_omw76"]
+HBoxContainer/constants/separation = 75
+Label/font_sizes/font_size = 40
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -16,6 +61,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_oi7g7")
 
 [node name="Scores" type="Panel" parent="."]
 layout_mode = 1
@@ -70,9 +116,12 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
+offset_left = 20.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = -20.0
 grow_vertical = 0
+theme = SubResource("Theme_perle")
 
 [node name="PA_Dash_1" type="ProgressBar" parent="PA_Dash_Container"]
 layout_mode = 0
@@ -113,10 +162,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
+offset_left = -60.0
+offset_top = -60.0
+offset_right = -20.0
+offset_bottom = -20.0
 grow_horizontal = 0
 grow_vertical = 0
+theme = SubResource("Theme_fkedo")
 
 [node name="PB_Dash_1" type="ProgressBar" parent="PB_Dash_Container"]
 layout_mode = 0
@@ -153,3 +205,85 @@ offset_right = -234.0
 offset_bottom = 40.0
 fill_mode = 1
 show_percentage = false
+
+[node name="SetsScores" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -212.5
+offset_top = -169.0
+offset_right = 212.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3yki0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SetsScores"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -205.5
+offset_top = -173.0
+offset_right = 205.5
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_omw76")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SetsScores/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SetsScores/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Set"
+
+[node name="Label2" type="Label" parent="SetsScores/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Red"
+
+[node name="Label3" type="Label" parent="SetsScores/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Green"
+
+[node name="Set1VBox" type="VBoxContainer" parent="SetsScores/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SetsScores/HBoxContainer/Set1VBox"]
+layout_mode = 2
+text = "1"
+
+[node name="Set1_PA" type="Label" parent="SetsScores/HBoxContainer/Set1VBox"]
+layout_mode = 2
+
+[node name="Set1_PB" type="Label" parent="SetsScores/HBoxContainer/Set1VBox"]
+layout_mode = 2
+
+[node name="Set2VBox" type="VBoxContainer" parent="SetsScores/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SetsScores/HBoxContainer/Set2VBox"]
+layout_mode = 2
+text = "2"
+
+[node name="Set2_PA" type="Label" parent="SetsScores/HBoxContainer/Set2VBox"]
+layout_mode = 2
+
+[node name="Set2_PB" type="Label" parent="SetsScores/HBoxContainer/Set2VBox"]
+layout_mode = 2
+
+[node name="Set3VBox" type="VBoxContainer" parent="SetsScores/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SetsScores/HBoxContainer/Set3VBox"]
+layout_mode = 2
+text = "3"
+
+[node name="Set3_PA" type="Label" parent="SetsScores/HBoxContainer/Set3VBox"]
+layout_mode = 2
+
+[node name="Set3_PB" type="Label" parent="SetsScores/HBoxContainer/Set3VBox"]
+layout_mode = 2

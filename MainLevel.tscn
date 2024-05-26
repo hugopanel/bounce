@@ -1,5 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://yn1jg6bmny8j"]
 
+
 [ext_resource type="Script" path="res://level1.gd" id="1_0rgbh"]
 [ext_resource type="PackedScene" uid="uid://bwi13bv5a6qrm" path="res://Model/stadeExport.blend" id="2_bobig"]
 [ext_resource type="PackedScene" uid="uid://ehhick0bwnou" path="res://puck.tscn" id="2_j3a6e"]
@@ -196,11 +197,12 @@ transform = Transform3D(1, -1.81918e-06, -4.59309e-07, 3.20739e-10, 1, 6.64369e-
 shape = SubResource("BoxShape3D_08w78")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("3_lp4oa")]
 
 [node name="GameTimer" type="Timer" parent="."]
-wait_time = 120.0
+wait_time = 90.0
 one_shot = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -223,6 +225,7 @@ volume_db = 20.0
 [node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, -2.99897e-08, -2.14204e-08, 6.51926e-09, 1, -7.91624e-09, 0, -3.25963e-09, 1, 0, 0, 0)
 stream = ExtResource("10_qgtjx")
+
 volume_db = 80.0
 
 [node name="Banc2" parent="." instance=ExtResource("11_nuov1")]
