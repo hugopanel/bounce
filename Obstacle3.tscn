@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://d13fvd7t8facb"]
+[gd_scene load_steps=7 format=3 uid="uid://d13fvd7t8facb"]
+
+[ext_resource type="Script" path="res://Obstacle.gd" id="1_6ncba"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe7ff"]
 
@@ -34,7 +36,14 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cpdba")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_q556o"]
+size = Vector3(1.56152, 1, 0.504883)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hapl7"]
+size = Vector3(0.588867, 1, 1.25488)
+
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_6ncba")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -45,3 +54,25 @@ polygon = PackedVector2Array(0.0368195, -1.51392, -1.00348, -0.996889, -1.68248,
 [node name="MeshInstance" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("ArrayMesh_s8c26")
 skeleton = NodePath("")
+
+[node name="ZoneA" type="Area3D" parent="."]
+transform = Transform3D(0.440394, 0, -0.897805, 0, 1, 0, 0.897805, 0, 0.440394, -1.57399, 0.382141, 0.415852)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ZoneA"]
+transform = Transform3D(1, 0, 5.02199e-09, 0, 1, 0, -5.49925e-11, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_q556o")
+
+[node name="Light" type="OmniLight3D" parent="ZoneA"]
+light_energy = 16.0
+omni_range = 0.90771
+
+[node name="ZoneB" type="Area3D" parent="."]
+transform = Transform3D(0.984862, 0, 0.173339, 0, 1, 0, -0.173339, 0, 0.984862, 3.349, 0.275864, -1.45189)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ZoneB"]
+transform = Transform3D(1, 0, -4.51218e-09, 0, 1, 0, -4.51218e-09, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_hapl7")
+
+[node name="Light" type="OmniLight3D" parent="ZoneB"]
+light_energy = 16.0
+omni_range = 0.706391

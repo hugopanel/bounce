@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://db2umdkyfbubm"]
+[gd_scene load_steps=7 format=3 uid="uid://db2umdkyfbubm"]
+
+[ext_resource type="Script" path="res://Obstacle.gd" id="1_4lcy2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ihe7"]
 
@@ -34,7 +36,14 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6uu25")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ocjl0"]
+size = Vector3(3.8479, 2.66577, 0.642822)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nkw1t"]
+size = Vector3(2.8916, 2.67871, 0.655273)
+
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_4lcy2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -45,3 +54,28 @@ polygon = PackedVector2Array(-1.01242, 0.997563, 0.991212, 0.984636, 3.35679, 2.
 [node name="MeshInstance" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("ArrayMesh_86hi0")
 skeleton = NodePath("")
+
+[node name="ZoneA" type="Area3D" parent="."]
+transform = Transform3D(0.903642, 0, -0.428289, 0, 1, 0, 0.428289, 0, 0.903642, 4.89585, 0.5849, 1.44152)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ZoneA"]
+transform = Transform3D(1, 0, -1.46185e-10, 0, 1, 0, -1.46185e-10, 0, 1, -0.133705, 0, 0.0636777)
+shape = SubResource("BoxShape3D_ocjl0")
+
+[node name="Light" type="OmniLight3D" parent="ZoneA"]
+transform = Transform3D(0.999977, 0, 0.00684166, 0, 1, 0, -0.00684167, 0, 0.999977, 0, 0, 0)
+light_color = Color(1, 0.201689, 0.239154, 1)
+light_energy = 16.0
+omni_range = 1.79976
+
+[node name="ZoneB" type="Area3D" parent="."]
+transform = Transform3D(0.809284, 0, 0.587418, 0, 1, 0, -0.587418, 0, 0.809284, 1.81578, 0.558044, -2.2755)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ZoneB"]
+transform = Transform3D(1, 0, -7.4584e-07, 0, 0.999979, 0, 1.0548e-07, 0, 0.999998, 0.0501337, 0, 0.205625)
+shape = SubResource("BoxShape3D_nkw1t")
+
+[node name="Light" type="OmniLight3D" parent="ZoneB"]
+light_color = Color(0.100847, 0.460424, 1, 1)
+light_energy = 20.41
+omni_range = 1.53027

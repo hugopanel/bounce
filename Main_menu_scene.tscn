@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b223gkdxfj4kv"]
+
+[ext_resource type="PackedScene" uid="uid://bek70nt2p7txn" path="res://main_menu.tscn" id="1_b8buq"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_yiv04"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("1_b8buq")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.840642, -0.397079, 0.368306, 0.522869, 0.772287, -0.360805, -0.14117, 0.495884, 0.856837, 0, 0, -2.01877)
+mesh = SubResource("PrismMesh_yiv04")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.51201)
