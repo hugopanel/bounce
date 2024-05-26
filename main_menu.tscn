@@ -1,13 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://bek70nt2p7txn"]
+[gd_scene load_steps=13 format=3 uid="uid://bek70nt2p7txn"]
 
 [ext_resource type="Theme" uid="uid://eru332xug30i" path="res://ui_theme.tres" id="1_xbvi0"]
 [ext_resource type="Script" path="res://main_menu_play_button.gd" id="2_phjyt"]
 [ext_resource type="Script" path="res://main_menu_quit_button.gd" id="3_5hns0"]
+[ext_resource type="Texture2D" uid="uid://byl2ie3we5yeh" path="res://art/play_normal_selected.png" id="3_mh02g"]
 [ext_resource type="Texture2D" uid="uid://basqtcneml5vk" path="res://art/play_normal_button.png" id="4_8y22m"]
 [ext_resource type="Texture2D" uid="uid://b6ah25fee4a20" path="res://art/play_solo_button.png" id="4_me6ek"]
 [ext_resource type="Texture2D" uid="uid://cttebkixwnjq0" path="res://art/settings_button.png" id="5_g5gw6"]
+[ext_resource type="Texture2D" uid="uid://d2bf1u58f5yv" path="res://art/play_solo_button_selected.png" id="6_0dvkh"]
 [ext_resource type="Texture2D" uid="uid://6cq51s4hxton" path="res://art/exit_game_button.png" id="6_pvt1r"]
+[ext_resource type="Texture2D" uid="uid://b2xcdcf5vyn3n" path="res://art/settings_button_selected.png" id="8_d8f06"]
 [ext_resource type="Texture2D" uid="uid://c3u8iq3ld7enw" path="res://art/logo.png" id="8_iosrt"]
+[ext_resource type="Texture2D" uid="uid://bfb65na6howee" path="res://art/exit_game_selected.png" id="10_onhfq"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -31,19 +35,27 @@ alignment = 1
 [node name="Play_Button" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_8y22m")
+texture_hover = ExtResource("3_mh02g")
+texture_focused = ExtResource("3_mh02g")
 script = ExtResource("2_phjyt")
 
 [node name="Play_Solo_Button" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_me6ek")
+texture_hover = ExtResource("6_0dvkh")
+texture_focused = ExtResource("6_0dvkh")
 
 [node name="Settings_Button" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("5_g5gw6")
+texture_hover = ExtResource("8_d8f06")
+texture_focused = ExtResource("8_d8f06")
 
 [node name="Quit_Button" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("6_pvt1r")
+texture_hover = ExtResource("10_onhfq")
+texture_focused = ExtResource("10_onhfq")
 script = ExtResource("3_5hns0")
 
 [node name="TextureRect" type="TextureRect" parent="."]
