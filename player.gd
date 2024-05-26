@@ -18,6 +18,7 @@ var action_dash
 # var enabled_counter = 0
 
 var available_dashes = 0
+var max_dashes = 4
 var dashing = false
 
 func _ready():
@@ -92,7 +93,7 @@ func _on_body_entered(body: PhysicsBody3D):
 			dashing = false
 
 func _new_dash_timer_timeout():
-	if (available_dashes < 2):
+	if (available_dashes < max_dashes):
 		available_dashes += 1
 		$NewDashTimer.start()
 

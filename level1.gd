@@ -3,10 +3,13 @@ extends Node3D
 @export var min_distance_between_obstacles: float = 10.0
 @export var max_attempts: int = 1000
 
+@export var PA_Score: int = 0
+@export var PB_Score: int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     # Add the obstacles to the map
-    add_obstacles($ObstaclesArea, $ObstaclesAreaAvoid, 7)
+    add_obstacles($ObstaclesArea, $ObstaclesAreaAvoid, 5)
 
     # Instanciate player 1
     var player1 = preload ("res://player.tscn").instantiate()
@@ -25,7 +28,7 @@ func _ready():
 func add_obstacles(spawn_area: Area3D, non_spawn_area: Area3D, number_of_obstacles: int):
     # List of all the possible obstacles
     var obstacles = [
-        # preload ("res://Obstacle1.tscn"),
+        preload ("res://Obstacle1.tscn"),
         # preload ("res://Obstacle2.tscn"),
         preload ("res://Obstacle3.tscn"),
         preload ("res://Obstacle4.tscn")
@@ -43,6 +46,8 @@ func add_obstacles(spawn_area: Area3D, non_spawn_area: Area3D, number_of_obstacl
                 var new_obstacle = obstacles[randi() % obstacles.size()].instantiate()
                 new_obstacle.position = random_position
                 new_obstacle.rotation.y = randf_range(0, 360)
+                new_obstacle.connect("PA_scored", _on_PA_scored)
+                new_obstacle.connect("PB_scored", _on_PB_scored)
                 add_child(new_obstacle)
                 spawned = true
                 spawned_obstacles.append(new_obstacle)
@@ -92,6 +97,14 @@ func is_position_valid(new_position: Vector3, existing_obstacles: Array, non_spa
             if new_position.x > non_spawn_area_origin.x - extents.x and new_position.x < non_spawn_area_origin.x + extents.x and new_position.z > non_spawn_area_origin.z - extents.z and new_position.z < non_spawn_area_origin.z + extents.z:
                 return false
     return true
+
+func _on_PA_scored():
+    PA_Score += 1
+    print("PA SCORE " + str(PA_Score))
+
+func _on_PB_scored():
+    PB_Score += 1
+    print("PB SCORE " + str(PB_Score))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
