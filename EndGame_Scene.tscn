@@ -1,4 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://ch2mjifovfroh"]
+[gd_scene load_steps=4 format=3 uid="uid://ch2mjifovfroh"]
+
+[sub_resource type="Theme" id="Theme_cmx30"]
+Button/font_sizes/font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_fqr42"]
+font_size = 60
 
 [sub_resource type="GDScript" id="GDScript_6nvni"]
 script/source = "extends Button
@@ -37,6 +43,7 @@ offset_right = 1056.0
 offset_bottom = 246.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_cmx30")
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 1
@@ -52,6 +59,7 @@ offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Congratulations"
+label_settings = SubResource("LabelSettings_fqr42")
 
 [node name="Button" type="Button" parent="Panel"]
 layout_mode = 1

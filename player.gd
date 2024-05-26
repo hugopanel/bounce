@@ -135,3 +135,13 @@ func _new_dash_timer_timeout():
 
 func _dashing_timer_timeout():
 	dashing = false
+
+func reset_dashes():
+	$NewDashTimer.stop()
+	$DashingTimer.stop()
+	available_dashes = 0
+	emit_signal("dash1_changed", 0)
+	emit_signal("dash2_changed", 0)
+	emit_signal("dash3_changed", 0)
+	emit_signal("dash4_changed", 0)
+	$NewDashTimer.start()

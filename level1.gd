@@ -78,6 +78,12 @@ func _ready():
     $GameTimer.timeout.connect(_on_game_timer_timeout)
 
 func add_obstacles(spawn_area: Area3D, non_spawn_area: Area3D, number_of_obstacles: int):
+    # List of the obstables with hitboxes
+    var obstacles_with_goals = [
+        preload ("res://Obstacle1.tscn"),
+        preload ("res://Obstacle3.tscn")
+    ]
+
     # List of all the possible obstacles
     var obstacles = [
         preload ("res://Obstacle1.tscn"),
@@ -85,6 +91,8 @@ func add_obstacles(spawn_area: Area3D, non_spawn_area: Area3D, number_of_obstacl
         preload ("res://Obstacle3.tscn"),
         preload ("res://Obstacle4.tscn")
     ]
+
+    var number_of_obstacles_with_goals = 2
 
     var spawned_obstacles = []
     for i in range(number_of_obstacles):
@@ -95,7 +103,12 @@ func add_obstacles(spawn_area: Area3D, non_spawn_area: Area3D, number_of_obstacl
             attempts += 1
             var random_position = get_random_position_in_area(spawn_area)
             if is_position_valid(random_position, spawned_obstacles, non_spawn_area):
-                var new_obstacle = obstacles[randi() % obstacles.size()].instantiate()
+                var new_obstacle
+                if (number_of_obstacles_with_goals > 0):
+                    new_obstacle = obstacles_with_goals[randi() % obstacles_with_goals.size()].instantiate()
+                    number_of_obstacles_with_goals -= 1
+                else:
+                    new_obstacle = obstacles[randi() % obstacles.size()].instantiate()
                 new_obstacle.position = random_position
                 new_obstacle.rotation.y = randf_range(0, 360)
                 new_obstacle.connect("PA_scored", _on_PA_scored)
@@ -210,6 +223,8 @@ func _on_game_timer_timeout():
         get_node("CanvasLayer").add_child(preload ("res://EndGame_Scene.tscn").instantiate())
     $GameTimer.stop()
     player1.position = Vector3( - 20, 0, 0)
+    player1.reset_dashes()
     player2.position = Vector3(20, 0, 0)
+    player2.reset_dashes()
     $Puck.position = Vector3(0, 0, 0)
     $Puck.velocity = Vector3(0, 0, 0)

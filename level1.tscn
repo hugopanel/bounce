@@ -32,10 +32,6 @@ size = Vector3(15.324, 7.56055, 13.1191)
 [node name="Node3D2" type="Node3D"]
 transform = Transform3D(0.999954, -0.00806205, 0.0051201, 0.00809159, 0.999951, -0.00577206, -0.00507329, 0.00581324, 0.99997, 0, 0, 0)
 script = ExtResource("1_50hpb")
-min_distance_between_obstacles = null
-max_attempts = null
-PA_Score = null
-PB_Score = null
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.999909, -0.00294158, 0.0131819, -0.0131818, 6.49527e-05, 0.999913, -0.0029422, -0.999996, 2.61602e-05, 0.0339886, 4.20028, -0.0242455)
