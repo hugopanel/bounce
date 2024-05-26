@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://dhwu4amdntksq"]
+[gd_scene load_steps=16 format=3 uid="uid://dhwu4amdntksq"]
 
 [ext_resource type="Script" path="res://level1.gd" id="1_50hpb"]
 [ext_resource type="PackedScene" uid="uid://ehhick0bwnou" path="res://puck.tscn" id="1_cs417"]
 [ext_resource type="PackedScene" uid="uid://lio7l5g7cjsk" path="res://level_ui.tscn" id="3_6k6tx"]
 [ext_resource type="AudioStream" uid="uid://blrbcok7egagv" path="res://sound/ball.wav" id="4_oguoc"]
 [ext_resource type="AudioStream" uid="uid://pepkgts7pyco" path="res://sound/dash.mp3" id="5_q18nk"]
+[ext_resource type="AudioStream" uid="uid://3uwoiii7shgv" path="res://sound/LongCrowd.mp3" id="6_eo5n0"]
+[ext_resource type="AudioStream" uid="uid://dxpr76hlax2ak" path="res://sound/ShortCrowd.mp3" id="7_y3h8r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gscvj"]
 albedo_color = Color(0.421683, 0.661853, 0.847407, 1)
@@ -156,4 +158,14 @@ volume_db = 30.0
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, -2.44163e-08, -2.18861e-08, 9.31323e-10, 1, -1.02445e-08, 0, -4.65661e-10, 1, 0, 0, 0)
 stream = ExtResource("5_q18nk")
+volume_db = 80.0
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, -2.62735e-08, -2.18861e-08, 2.79397e-09, 1, -9.77889e-09, 0, -1.39698e-09, 1, 0, 0, 0)
+stream = ExtResource("6_eo5n0")
+volume_db = 20.0
+
+[node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, -2.99897e-08, -2.14204e-08, 6.51926e-09, 1, -7.91624e-09, 0, -3.25963e-09, 1, 0, 0, 0)
+stream = ExtResource("7_y3h8r")
 volume_db = 80.0

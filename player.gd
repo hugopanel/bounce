@@ -36,6 +36,7 @@ func _ready():
 	$NewDashTimer.start()
 	$DashingTimer.timeout.connect(_dashing_timer_timeout)
 	
+	
 func init_controls():
 	movement_left = "PA_Left" if player_id == 1 else "PB_Left"
 	movement_right = "PA_Right" if player_id == 1 else "PB_Right"

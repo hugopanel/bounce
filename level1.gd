@@ -28,6 +28,7 @@ func _ready():
 	player1.position.x -= 20
 	player1.init_controls()
 	add_child(player1)
+	$AudioStreamPlayer3D3.play()
 	
 	# Instanciate player 2
 	var player2 = preload ("res://player.tscn").instantiate()
@@ -128,11 +129,13 @@ func _on_PA_scored():
 	PA_Score += 1
 	print("PA SCORE " + str(PA_Score))
 	PA_Score_Label.text = str(PA_Score)
+	$AudioStreamPlayer3D4.play()
 
 func _on_PB_scored():
 	PB_Score += 1
 	print("PB SCORE " + str(PB_Score))
 	PB_Score_Label.text = str(PB_Score)
+	$AudioStreamPlayer3D4.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
