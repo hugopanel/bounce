@@ -18,9 +18,9 @@ func _ready():
     # set zones' colors
     if (zoneA_team == 1):
         $ZoneA.get_node("Light").light_color = Color(1, 0, 0, 1)
-        $ZoneB.get_node("Light").light_color = Color(0.1, 0.2, 1, 1)
+        $ZoneB.get_node("Light").light_color = Color(0, 1, 0, 1)
     else:
-        $ZoneA.get_node("Light").light_color = Color(0.1, 0.2, 1, 1)
+        $ZoneA.get_node("Light").light_color = Color(0, 1, 0, 1)
         $ZoneB.get_node("Light").light_color = Color(1, 0, 0, 1)
 
     $ZoneA.body_entered.connect(_on_body_entered_A)

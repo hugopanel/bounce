@@ -15,3 +15,5 @@ func _physics_process(delta):
 	if collision_info:
 		if collision_info.get("name") != "Player"||collision_info.get_collider_velocity() == Vector3.ZERO:
 			velocity = velocity.bounce(collision_info.get_normal())
+	
+	rotation.y += ((velocity.x + velocity.y) * delta)

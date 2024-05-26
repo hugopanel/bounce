@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://b223gkdxfj4kv"]
+[gd_scene load_steps=6 format=3 uid="uid://b223gkdxfj4kv"]
 
 [ext_resource type="PackedScene" uid="uid://bek70nt2p7txn" path="res://main_menu.tscn" id="1_b8buq"]
 [ext_resource type="PackedScene" uid="uid://bwi13bv5a6qrm" path="res://Model/stadeExport.blend" id="2_7mamn"]
+[ext_resource type="Texture2D" uid="uid://dytglc4blqic6" path="res://art/stadium_decal.png" id="3_qg73x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_703hp"]
+albedo_texture = ExtResource("3_qg73x")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4japl"]
+material = SubResource("StandardMaterial3D_703hp")
 
 [node name="Node3D" type="Node3D"]
 
@@ -14,3 +21,7 @@ transform = Transform3D(0.524328, 0.0267616, -0.851096, -2.29991e-09, 0.999506, 
 fov = 17.352
 
 [node name="stadeExport" parent="." instance=ExtResource("2_7mamn")]
+
+[node name="FieldTexture" type="MeshInstance3D" parent="stadeExport"]
+transform = Transform3D(60.0022, -7.0416e-16, 1.912e-13, 1.37387e-13, 0.999999, 1.61161e-15, 2.09291e-13, 2.86339e-17, 39.5956, -7.08256e-16, 1.00582, 2.88004e-17)
+mesh = SubResource("PlaneMesh_4japl")
