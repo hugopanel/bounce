@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cycutwfv6lwbf"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_28m8g"]
+[ext_resource type="PackedScene" uid="uid://b4jxdh4532uqg" path="res://art/player.glb" id="1_praxj"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_x81f3"]
+radius = 0.649887
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tynqb"]
+radius = 1.20013
+
+[node name="Player" type="CharacterBody3D"]
+disable_mode = 2
+axis_lock_linear_y = true
+script = ExtResource("1_28m8g")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Character" parent="Pivot" instance=ExtResource("1_praxj")]
+transform = Transform3D(-0.49917, 0, -4.36388e-08, 0, 0.49917, 0, 4.36388e-08, 0, -0.49917, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01122, 0)
+shape = SubResource("CylinderShape3D_x81f3")
+
+[node name="Area3D" type="Area3D" parent="."]
+disable_mode = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01459, 0)
+shape = SubResource("CylinderShape3D_tynqb")
+
+[node name="NewDashTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="DashingTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true

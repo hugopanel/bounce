@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ehhick0bwnou"]
+
+[ext_resource type="Script" path="res://puck.gd" id="1_nb11t"]
+[ext_resource type="PackedScene" uid="uid://cpm8pot4ciyg6" path="res://art/puck.glb" id="1_pq4pu"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bt3i4"]
+height = 0.261861
+radius = 2.23568
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_f8cv3"]
+height = 0.245619
+radius = 0.998371
+
+[node name="Puck" type="RigidBody3D"]
+can_sleep = false
+script = ExtResource("1_nb11t")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.493422, 0, 0, 0, 0.493422, 0, 0, 0, 0.493422, 0, 0, 0)
+shape = SubResource("CylinderShape3D_bt3i4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101035, 0)
+shape = SubResource("CylinderShape3D_f8cv3")
+
+[node name="puck" parent="CollisionShape3D" instance=ExtResource("1_pq4pu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.101035, 0)
