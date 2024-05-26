@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bek70nt2p7txn"]
+[gd_scene load_steps=9 format=3 uid="uid://bek70nt2p7txn"]
 
 [ext_resource type="Theme" uid="uid://eru332xug30i" path="res://ui_theme.tres" id="1_xbvi0"]
 [ext_resource type="Script" path="res://main_menu_play_button.gd" id="2_phjyt"]
 [ext_resource type="Script" path="res://main_menu_quit_button.gd" id="3_5hns0"]
 [ext_resource type="Texture2D" uid="uid://basqtcneml5vk" path="res://art/play_normal_button.png" id="4_8y22m"]
 [ext_resource type="Texture2D" uid="uid://b6ah25fee4a20" path="res://art/play_solo_button.png" id="4_me6ek"]
+[ext_resource type="AudioStream" uid="uid://blrbcok7egagv" path="res://sound/ball.wav" id="4_pk15c"]
 [ext_resource type="Texture2D" uid="uid://cttebkixwnjq0" path="res://art/settings_button.png" id="5_g5gw6"]
 [ext_resource type="Texture2D" uid="uid://6cq51s4hxton" path="res://art/exit_game_button.png" id="6_pvt1r"]
 
@@ -44,3 +45,8 @@ texture_normal = ExtResource("5_g5gw6")
 layout_mode = 2
 texture_normal = ExtResource("6_pvt1r")
 script = ExtResource("3_5hns0")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="VBoxContainer"]
+position = Vector2(0, 205.5)
+stream = ExtResource("4_pk15c")
+volume_db = 24.0
