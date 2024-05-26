@@ -10,6 +10,8 @@ var ui
 var PA_Score_Label
 var PB_Score_Label
 
+var timer_started = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     # Add the obstacles to the map
@@ -44,6 +46,10 @@ func _ready():
     player2.dash2_changed.connect(func(percentage: float): ui.get_node("PB_Dash_Container/PB_Dash_2").value=percentage)
     player2.dash3_changed.connect(func(percentage: float): ui.get_node("PB_Dash_Container/PB_Dash_3").value=percentage)
     player2.dash4_changed.connect(func(percentage: float): ui.get_node("PB_Dash_Container/PB_Dash_4").value=percentage)
+
+    # Bind signals to start the game timer when the puck is shot for the first time
+    player1.puck_shot.connect(start_game_timer)
+    player2.puck_shot.connect(start_game_timer)
 
 func add_obstacles(spawn_area: Area3D, non_spawn_area: Area3D, number_of_obstacles: int):
     # List of all the possible obstacles
@@ -130,4 +136,9 @@ func _on_PB_scored():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-    pass
+    ui.get_node("Scores/TimeLeft").text = str(round($GameTimer.time_left))
+
+func start_game_timer():
+    if (!timer_started):
+        timer_started = true
+        $GameTimer.start()

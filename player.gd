@@ -5,6 +5,8 @@ signal dash2_changed(percentage: float)
 signal dash3_changed(percentage: float)
 signal dash4_changed(percentage: float)
 
+signal puck_shot
+
 # How fast the player moves in meters per second.
 @export var speed = 14
 
@@ -115,6 +117,7 @@ func _on_body_entered(body: PhysicsBody3D):
 			body.velocity = velocity.normalized() * speed * 2
 			# enabled = false
 			dashing = false
+			puck_shot.emit()
 
 func _process(delta):
 	pass
