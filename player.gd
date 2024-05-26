@@ -65,6 +65,7 @@ func _physics_process(delta):
 				available_dashes -= 1
 				$NewDashTimer.start()
 				$DashingTimer.start()
+				$"../AudioStreamPlayer3D2".play()
 				dashing = true
 				if (available_dashes == 0):
 					emit_signal("dash1_changed", 0)
