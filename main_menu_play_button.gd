@@ -25,4 +25,4 @@ func click():
 
 # Cette fonction sera appelée lorsque le Timer atteindra 0
 func on_timer_timeout():
-	get_tree().change_scene_to_file("res://level1.tscn")
+	get_tree().change_scene_to_file("res://MainLevel.tscn")
