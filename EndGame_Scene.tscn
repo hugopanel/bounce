@@ -16,7 +16,7 @@ func _process(delta):
 	pass
 "
 
-[node name="Control" type="Control"]
+[node name="Control2" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
