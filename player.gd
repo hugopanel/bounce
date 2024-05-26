@@ -112,6 +112,7 @@ func _physics_process(delta):
 func _on_body_entered(body: PhysicsBody3D):
 	# if enabled:
 	if (body.name == "Puck"):
+		$"../AudioStreamPlayer3D".play()
 		# Check if player is moving
 		if (velocity != Vector3.ZERO):
 			body.velocity = velocity.normalized() * speed * 2
