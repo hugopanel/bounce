@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcfitojoiq0e4"
+uid="uid://dwnxcqj2i7m02"
 path.s3tc="res://.godot/imported/pub_green_metal_rust_nor_gl_2k.jpg-994adc6f0836567ffe57075649c764d1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "47cde67a47de6b41e3de992cf2c39958"
+"md5": "aa1f621a0eb6aba1b6059df73ba22c56"
 }
 
 [deps]

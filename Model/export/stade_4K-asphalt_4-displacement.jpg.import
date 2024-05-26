@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bueaiuqtw2fd6"
+uid="uid://b0qu43sgeacrv"
 path.s3tc="res://.godot/imported/stade_4K-asphalt_4-displacement.jpg-86245cbc7f4bb239ee5bf6b5494ab49d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "c73d55a462e548b7cbe3ef074930bacb"
+"md5": "f549ab601e373d1ca18783623fef2b7f"
 }
 
 [deps]

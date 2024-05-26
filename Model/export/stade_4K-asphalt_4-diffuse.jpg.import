@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uxyvbcupkk3f"
+uid="uid://c5mqflo6l1ydd"
 path.s3tc="res://.godot/imported/stade_4K-asphalt_4-diffuse.jpg-fb42ec96fd35d0023d7df01e383c96ef.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "750715d80f3cf5ac71f15e9f4167c3de"
+"md5": "6cf5c5b2f4cab24cd55bd8daa3cc5e34"
 }
 
 [deps]
