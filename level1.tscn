@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dhwu4amdntksq"]
+[gd_scene load_steps=12 format=3 uid="uid://dhwu4amdntksq"]
 
 [ext_resource type="Script" path="res://level1.gd" id="1_50hpb"]
 [ext_resource type="PackedScene" uid="uid://ehhick0bwnou" path="res://puck.tscn" id="1_cs417"]
+[ext_resource type="PackedScene" uid="uid://lio7l5g7cjsk" path="res://level_ui.tscn" id="3_6k6tx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gscvj"]
 albedo_color = Color(0.421683, 0.661853, 0.847407, 1)
@@ -137,3 +138,7 @@ shape = SubResource("BoxShape3D_h07yu")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ObstaclesAreaAvoid"]
 transform = Transform3D(1, -1.39352e-06, -3.52207e-07, 3.20739e-10, 1, 5.08372e-07, 4.33187e-11, -1.06776e-06, 1, 0.00591625, 0.0608498, -0.0357518)
 shape = SubResource("BoxShape3D_08w78")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("3_6k6tx")]
