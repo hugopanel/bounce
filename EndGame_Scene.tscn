@@ -1,0 +1,70 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch2mjifovfroh"]
+
+[sub_resource type="GDScript" id="GDScript_6nvni"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	grab_focus()
+	self.pressed.connect(func(): get_tree().change_scene_to_file(\"res://Main_menu_scene.tscn\"))
+	#pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1056.0
+offset_top = -246.0
+offset_right = 1056.0
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -26.0
+offset_right = 62.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Congratulations"
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -59.0
+offset_top = -44.0
+offset_right = 60.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Go back home"
+script = SubResource("GDScript_6nvni")

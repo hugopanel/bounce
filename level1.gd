@@ -6,31 +6,55 @@ extends Node3D
 @export var PA_Score: int = 0
 @export var PB_Score: int = 0
 
+var currentSet = 1
+var Set1_PA: int
+var Set2_PA: int
+var Set3_PA: int
+var Set1_PB: int
+var Set2_PB: int
+var Set3_PB: int
+
 var ui
 var PA_Score_Label
 var PB_Score_Label
 
+var Set1_PA_Label
+var Set2_PA_Label
+var Set3_PA_Label
+var Set1_PB_Label
+var Set2_PB_Label
+var Set3_PB_Label
+
 var timer_started = false
+
+var player1
+var player2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
     # Add the obstacles to the map
     add_obstacles($ObstaclesArea, $ObstaclesAreaAvoid, 5)
 
-    # $UI.get_node("Panel/PA_Score").text = "99"
     ui = get_node("CanvasLayer/UI")
     PA_Score_Label = ui.get_node("Scores/PA_Score")
     PB_Score_Label = ui.get_node("Scores/PB_Score")
 
+    Set1_PA_Label = ui.get_node("SetsScores/HBoxContainer/Set1VBox/Set1_PA")
+    Set2_PA_Label = ui.get_node("SetsScores/HBoxContainer/Set2VBox/Set2_PA")
+    Set3_PA_Label = ui.get_node("SetsScores/HBoxContainer/Set3VBox/Set3_PA")
+    Set1_PB_Label = ui.get_node("SetsScores/HBoxContainer/Set1VBox/Set1_PB")
+    Set2_PB_Label = ui.get_node("SetsScores/HBoxContainer/Set2VBox/Set2_PB")
+    Set3_PB_Label = ui.get_node("SetsScores/HBoxContainer/Set3VBox/Set3_PB")
+
     # Instanciate player 1
-    var player1 = preload ("res://player.tscn").instantiate()
+    player1 = preload ("res://player.tscn").instantiate()
     player1.player_id = 1
     player1.position.x -= 20
     player1.init_controls()
     add_child(player1)
     
     # Instanciate player 2
-    var player2 = preload ("res://player.tscn").instantiate()
+    player2 = preload ("res://player.tscn").instantiate()
     player2.player_id = 2
     player2.position.x += 20
     player2.init_controls()
@@ -50,6 +74,8 @@ func _ready():
     # Bind signals to start the game timer when the puck is shot for the first time
     player1.puck_shot.connect(start_game_timer)
     player2.puck_shot.connect(start_game_timer)
+
+    $GameTimer.timeout.connect(_on_game_timer_timeout)
 
 func add_obstacles(spawn_area: Area3D, non_spawn_area: Area3D, number_of_obstacles: int):
     # List of all the possible obstacles
@@ -142,3 +168,47 @@ func start_game_timer():
     if (!timer_started):
         timer_started = true
         $GameTimer.start()
+
+func _on_game_timer_timeout():
+    if (currentSet == 1):
+        Set1_PA = PA_Score
+        Set1_PB = PB_Score
+        PA_Score = 0
+        PB_Score = 0
+        PA_Score_Label.text = str(PA_Score)
+        PB_Score_Label.text = str(PB_Score)
+        Set1_PA_Label.text = str(Set1_PA)
+        Set1_PB_Label.text = str(Set1_PB)
+        currentSet += 1
+        timer_started = false
+    elif (currentSet == 2):
+        Set2_PA = PA_Score
+        Set2_PB = PB_Score
+        PA_Score = 0
+        PB_Score = 0
+        PA_Score_Label.text = str(PA_Score)
+        PB_Score_Label.text = str(PB_Score)
+        Set2_PA_Label.text = str(Set2_PA)
+        Set2_PB_Label.text = str(Set2_PB)
+        currentSet += 1
+        timer_started = false
+    elif (currentSet == 3):
+        Set3_PA = PA_Score
+        Set3_PB = PB_Score
+        PA_Score = 0
+        PB_Score = 0
+        PA_Score_Label.text = str(PA_Score)
+        PB_Score_Label.text = str(PB_Score)
+        Set3_PA_Label.text = str(Set3_PA)
+        Set3_PB_Label.text = str(Set3_PB)
+        currentSet += 1
+        print("Set 1 PA: " + str(Set1_PA) + " Set 1 PB: " + str(Set1_PB))
+        print("Set 2 PA: " + str(Set2_PA) + " Set 2 PB: " + str(Set2_PB))
+        print("Set 3 PA: " + str(Set3_PA) + " Set 3 PB: " + str(Set3_PB))
+        player1.enabled = false
+        player2.enabled = false
+    $GameTimer.stop()
+    player1.position = Vector3( - 20, 0, 0)
+    player2.position = Vector3(20, 0, 0)
+    $Puck.position = Vector3(0, 0, 0)
+    $Puck.velocity = Vector3(0, 0, 0)
